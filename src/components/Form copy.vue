@@ -78,7 +78,7 @@
         </form>
       </div>
     </div>
-    <!-- <div class="row mt-5" v-if="submittedCards.length">
+    <div class="row mt-5" v-if="submittedCards.length">
       <div class="d-flex flex-wrap justify-content-start">
         <div
           v-for="(card, index) in submittedCards"
@@ -98,28 +98,12 @@
           </ul>
         </div>
       </div>
-    </div> -->
-
-    <div class="row mt-5" v-if="submittedCards.length">
-      <DataTable :value="submittedCards" responsiveLayout="scroll">
-        <Column field="username" header="Username"></Column>
-        <Column field="password" header="Password"></Column>
-        <Column field="isAustralian" header="Australian Resident">
-          <template #body="slotProps">
-            {{ slotProps.data.isAustralian ? 'true' : 'false' }}
-          </template>
-        </Column>
-        <Column field="gender" header="Gender"></Column>
-        <Column field="reason" header="Reason"></Column>
-      </DataTable>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import DataTable from 'primevue/datatable'
-import Column from 'primevue/column'
 
 const formData = ref({
   username: '',
