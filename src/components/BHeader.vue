@@ -16,8 +16,26 @@
           <!-- <li class="nav-item"><a href="#" class="nav-link">Contact us</a></li> -->
         </li>
         <li class="nav-item">
+          <router-link to="/addbook" class="nav-link" active-class="active">Add Book</router-link>
+        </li>
+        <li class="nav-item">
           <router-link v-if="!isAuthenticated" to="/login" class="nav-link" active-class="ative"
             >Login</router-link
+          >
+        </li>
+        <li class="nav-item">
+          <router-link to="/firelogin" class="nav-link" active-class="active"
+            >Firebase Login</router-link
+          >
+        </li>
+        <li class="nav-item">
+          <router-link to="/fireregister" class="nav-link" active-class="active"
+            >Firebase Register</router-link
+          >
+        </li>
+        <li class="nav-item">
+          <router-link to="/firelogout" class="nav-link" active-class="active"
+            >Firebase Logout</router-link
           >
         </li>
       </ul>
