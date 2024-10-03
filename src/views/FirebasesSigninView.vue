@@ -17,6 +17,7 @@ const password = ref('')
 const router = useRouter()
 const auth = getAuth()
 const db = getFirestore()
+let error
 
 const signin = async () => {
   try {

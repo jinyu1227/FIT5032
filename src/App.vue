@@ -1,22 +1,6 @@
-<script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import BHeader from './components/BHeader.vue'
-import LibraryRegistrationForm from './components/LibraryRegistrationForm.vue'
-
-const isAuthenticated = ref(localStorage.getItem('isAuthenticated') === 'true')
-const router = useRouter()
-
-const logout = () => {
-  localStorage.removeItem('isAuthenticated')
-  isAuthenticated.value = false
-  router.push('/login')
-}
-</script>
-
 <template>
   <div class="main-container">
-    <header>
+    <header v-if="showHeader">
       <BHeader />
     </header>
 
@@ -26,6 +10,34 @@ const logout = () => {
     </main>
   </div>
 </template>
+
+<script>
+import { computed, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import BHeader from './components/BHeader.vue'
+//import LibraryRegistrationForm from './components/LibraryRegistrationForm.vue'
+import CountBookAPI from './views/CountBookAPI.vue'
+//const isAuthenticated = ref(localStorage.getItem('isAuthenticated') === 'true')
+//const router = useRouter()
+
+export default {
+  name: 'App',
+  components: {
+    BHeader,
+    CountBookAPI
+  },
+  computed: {
+    showHeader() {
+      return this.$route.name !== 'CountBookAPI'
+    }
+  }
+}
+// const logout = () => {
+//   localStorage.removeItem('isAuthenticated')
+//   isAuthenticated.value = false
+//   router.push('/login')
+// }
+</script>
 
 <style>
 .container,

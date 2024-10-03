@@ -18,8 +18,7 @@
 
 <script>
 import { ref } from 'vue'
-import db from '../firebase/init.js'
-import { collection, addDoc } from 'firebase/firestore'
+import axios from 'axios'
 import BookList from '../components/BookList.vue'
 
 export default {
@@ -34,15 +33,19 @@ export default {
           return
         }
 
-        await addDoc(collection(db, 'books'), {
+        const response = await axios.post('https://addbook-ev2gykg43q-uc.a.run.app', {
           isbn: isbnNumber,
           name: name.value
         })
-        isbn.value = ''
-        name.value = ''
-        alert('Book added successfully!')
+
+        if (response.status === 200) {
+          isbn.value = ''
+          name.value = ''
+          alert('Book added successfully with capitalized name!')
+        }
       } catch (error) {
         console.error('Error adding book: ', error)
+        alert('Failed to add book')
       }
     }
     return {
