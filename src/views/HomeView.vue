@@ -111,7 +111,9 @@ const validateReason = (blur) => {
     <div class="row">
       <div class="col-md-8 offset-md-2">
         <h1 class="text-center">🗄️ W5. Library Registration Form</h1>
-        <p class="text-center">Let's build some more advanced features into our form.</p>
+        <p class="text-center">
+          Let's build some more advanced features into our form. try a little change.
+        </p>
         <form @submit.prevent="submitForm">
           <div class="row mb-3">
             <div class="col-md-6 col-sm-6">
