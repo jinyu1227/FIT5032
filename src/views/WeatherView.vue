@@ -60,7 +60,7 @@ export default {
     //Get the current weather icon using the API link
     iconUrl() {
       return this.weatherData
-        ? `http://api.openweathermap.org/img/w/${this.weatherData.weather[0].icon}.png`
+        ? `https://api.openweathermap.org/img/w/${this.weatherData.weather[0].icon}.png`
         : null
     }
   },
@@ -75,7 +75,7 @@ export default {
     //And it won't occupy the main thread, so the user experience is still smooth
     async searchByCity() {
       if (!this.city) return
-      const url = `http://api.openweathermap.org/data/2.5/weather?q=${this.city}&appid=${apikey}`
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${this.city}&appid=${apikey}`
       await this.fetchWeatherData(url)
     },
     async fetchCurrentLocationWeather() {
@@ -85,7 +85,7 @@ export default {
         navigator.geolocation.getCurrentPosition(async (position) => {
           const { latitude, longitude } = position.coords
           //API link to obtain the current weather based on the current location browser identified
-          const url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apikey}`
+          const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apikey}`
           //await means wait for the fetchWeatherData method to complete before proceeding
           await this.fetchWeatherData(url)
         })
